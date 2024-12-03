@@ -1,0 +1,32 @@
+
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+select {
+    font-size: small;
+    margin: 5px;
+}
+#distributorSelect {
+    height: 35px;
+}
+
+.detail-left {
+    flex-basis: 35%;
+    flex-direction: column;
+}
+
+.detail-right {
+    flex-basis: 60%;
+    flex-direction: column;
+}
+
+input::placeholder {
+    color: #4a5568;
+    opacity: 1;
+}
+
+
+
+

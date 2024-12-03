@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributor List</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container mx-auto p-4 text-center pt-5 pr-60 pb-5 pl-60 m-5">
+        <form id="distributor_form" class="border border-slate-800 bg-white shadow-xl rounded-lg my-10 mx-50">
+            <h2 class="text-slate-800 text-4xl font-semibold m-10">Distributors</h2>
+            <div class="m-5">
+                <div class="mt-5 mb-2 text-left">
+                    <label class="w-full text-sm">Distributor Name :</label>
+                </div>
+                
+                <select id="distributorSelect" class="w-full border border-slate-300 rounded-md">
+                        <option value="" class="text-center text-sm">-- Enter distributor name --</option>
+                </select>
+                 <div class="detail">
+                    <div class="container">
+                        <div class="row w-full grid grid-cols-2 gap-5 mt-10">
+                            <div class="detail-left text-left flex flex-col">
+                                <label class="mb-2">SBU</label>
+                                <label class="mb-2">LOC CODE</label>
+                                <label class="mb-2">LOC NAME</label>
+                                <label class="mb-2">DISTRIBUTOR</label>
+                            </div>
+                            <div class="detail-right flex flex-col">
+                                <input type="text" id="" class="border border-slate-500 rounded-md w-full mb-2 text-center" placeholder="833">
+                                <input type="text" id="locCodeInput" class="border border-slate-500 rounded-md w-full mb-2 text-center">
+                                <input type="text" id="locNameInput" class="border border-slate-500 rounded-md w-full mb-2 text-center">
+                                <input type="text" id="distributorInput" class="border border-slate-500 rounded-md w-full mb-2 text-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </form>
+    </div>
+    <script src="index.js"></script>
+    <script>
+
+        let distributorsData = [];
+
+        // Fetch distributor data from json file
+        fetch('distributors.json')
+            .then(response => {
+                if(!response.ok) {
+                    throw new Error('HTTP error! status: ${response.status}');
+                }
+                return response.json();
+            })
+
+            .then(data => {
+                distributorsData = data;
+                const select = document.getElementById('distributorSelect');
+                data.forEach(distributor => {
+                    const option = document.createElement('option');
+                    option.value = distributor.name;
+                    option.textContent = distributor.name;
+                    select.appendChild(option);
+                });
+            })
+
+            .catch(error => {
+                console.error('Failed to load distributor data:',error);
+            });
+
+            // update input fields when a distributor is selected
+            document.getElementById('distributorSelect').addEventListener('change', function() {
+                const selectedDistributor = this.value; 
+                const distributor = distributorsData.find(d => d.name === selectedDistributor);
+
+                // Fill inputs if distributor selected
+                if(distributor) {
+                    document.getElementById('locCodeInput').value = distributor.locCode || '';
+                    document.getElementById('locNameInput').value = distributor.locName || '';
+                    document.getElementById('distributorInput').value = distributor.name || '';
+                } else {
+                    // Clear inputs if no distributor matches
+                    document.getElementById('locCodeInput').value = '';
+                    document.getElementById('locNameInput').value = '';
+                    document.getElementById('distributorInput').value = '';
+                }
+            });   
+        </script>
+</body>
+</html>
