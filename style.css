@@ -1,7 +1,14 @@
 
 body {
+    background-image: url('img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
     margin: 0;
-    background-color: #f4f4f4;
 }
 
 select {
@@ -10,6 +17,10 @@ select {
 }
 #distributorSelect {
     height: 35px;
+}
+
+#distributor_form {
+    opacity: 0.7;
 }
 
 .detail-left {
@@ -27,6 +38,28 @@ input::placeholder {
     opacity: 1;
 }
 
+img {
+    width: 100px;
+    height: auto;
+}
+
+
+
+/* responsive */
+@media (max-width:600px) {
+    #distributor_form {
+        padding: 10px;
+        margin: 0;
+    }
+
+    .detail .row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .detail-right input {
+        font-size: 0.875rem;
+    }
+}
 
 
 

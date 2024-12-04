@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Distributor List Application to manage and search for distributors with ease.">
+    <meta name="keywords" content="Arpico Distributor List, arpico distributor list,arpico distributors, Arpico Distributors">
+    <meta name="author" content="Achira - Arpico Group IT">
     <title>Distributor List</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div class="container mx-auto p-4 text-center pt-5 pr-60 pb-5 pl-60 m-5">
-        <form id="distributor_form" class="border border-slate-800 bg-white shadow-xl rounded-lg my-10 mx-50">
+    <div class="container mx-auto p-4 text-center sm:p-4 md:pt-5 md:pr-60 md:pb-5 md:pl-60 md:m-5">
+        <form id="distributor_form" class="border border-slate-800 bg-white shadow-xl rounded-2xl my-20 mx-50">
+            <!-- <img src="img/abouthome.jpg" alt="" class="mt-5 ml-10"> -->
             <h2 class="text-slate-800 text-4xl font-semibold m-10">Distributors</h2>
             <div class="m-5">
                 <div class="mt-5 mb-2 text-left">
@@ -22,14 +26,14 @@
                 </select>
                  <div class="detail">
                     <div class="container">
-                        <div class="row w-full grid grid-cols-2 gap-5 mt-10">
+                        <div class="row w-full grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10">
                             <div class="detail-left text-left flex flex-col">
                                 <label class="mb-2">SBU</label>
                                 <label class="mb-2">LOC CODE</label>
                                 <label class="mb-2">LOC NAME</label>
                                 <label class="mb-2">DISTRIBUTOR</label>
                             </div>
-                            <div class="detail-right flex flex-col">
+                            <div class="detail-right flex flex-col font-semibold">
                                 <input type="text" id="" class="border border-slate-500 rounded-md w-full mb-2 text-center" placeholder="833">
                                 <input type="text" id="locCodeInput" class="border border-slate-500 rounded-md w-full mb-2 text-center">
                                 <input type="text" id="locNameInput" class="border border-slate-500 rounded-md w-full mb-2 text-center">
